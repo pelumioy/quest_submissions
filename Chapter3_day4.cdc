@@ -80,7 +80,7 @@ pub contract Stuff {
     pub fun fixThis() {
       let test: Test{ITest} = Test()
       let newGreeting = test.changeGreeting(newGreeting: "Bonjour!")
-      let newFruit = test.changeFruit(newFruit: "Bonjour!") 
+      let newFruit = test.changeFruit(newFruit: "Apple!") 
       log(newGreeting)
       log(newFruit)
     }
