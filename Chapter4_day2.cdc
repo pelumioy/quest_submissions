@@ -55,7 +55,7 @@ transaction() {
 }
 
 
-// Script trying to access what wasn't made available
+// Transaction trying to access what wasn't made available
 import Pokedex from 0x01
 transaction(address: Address) {
 
@@ -77,19 +77,13 @@ transaction(address: Address) {
 
 // Script accessing what is available
 import Pokedex from 0x01
-transaction(address: Address) {
-
-  prepare(signer: AuthAccount) {
-
-  }
-
-  execute {
+pub fun main(address: Address): String {
     let publicCapability: Capability<&Pokedex.Pokemon{Pokedex.IPokemon}> =
       getAccount(address).getCapability<&Pokedex.Pokemon{Pokedex.IPokemon}>(/public/MyPokedexResource)
     let testResource: &Pokedex.Pokemon{Pokedex.IPokemon} = publicCapability.borrow() ?? panic("The capability doesn't exist or you did not specify the right type when you got the capability.")
 
     return testResource.name
-  }
+ 
 }
 
 
